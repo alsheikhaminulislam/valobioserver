@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Enable CORS and allow credentials
 app.use(cors({
-    origin: process.env.NODE_ENV === "development"? 'http://localhost:3000' : "https://valobio.onrender.com/", // Specify the origin explicitly
+    origin: process.env.NODE_ENV === "development"? 'http://localhost:3000' : "https://alsheikhaminulislam.github.io/valobio/", // Specify the origin explicitly
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true, // Allow credentials (cookies, tokens, etc.)
 }));
