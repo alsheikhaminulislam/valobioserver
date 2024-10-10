@@ -6,8 +6,7 @@ const cookieParser = require('cookie-parser');
 const { initializeApp } = require("firebase/app");
 const { getDatabase, ref, get, update, set } = require("firebase/database");
 const cors = require('cors');
-const bcrypt = require('bcrypt');
-const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 
 // Your web app's Firebase configuration
