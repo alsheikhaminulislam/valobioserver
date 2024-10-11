@@ -95,7 +95,7 @@ app.post('/register', async (req, res) => {
             res.cookie('token', token, {
                 httpOnly: true,
                 secure: true,
-                sameSite: 'Strict',
+                sameSite: 'None',
                 maxAge: 3600000 // 1 hour
             });
             return res.status(201).json({
@@ -141,7 +141,7 @@ app.post('/login', async (req, res) => {
                 res.cookie('token', token, {
                     httpOnly: true, // Prevents JavaScript access
                     secure: true,   // Ensures cookie is sent over HTTPS only
-                    sameSite: 'Strict', // Helps prevent CSRF
+                    sameSite: 'None', // Helps prevent CSRF
                     maxAge: 3600000 // 1 hour
                 });
                 // Return the token and user information without sensitive data
