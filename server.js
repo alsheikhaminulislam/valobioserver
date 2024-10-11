@@ -66,6 +66,8 @@ const sanitizeEmail = (email) => email.replace(/\./g, ',').split("@")[0];
 
 // Register user
 app.post('/register', async (req, res) => {
+    // Set header to specify the content type as JSON
+    res.setHeader('Content-Type', 'application/json');
     const { email, password } = req.body;
 
     try {
@@ -114,6 +116,8 @@ app.post('/register', async (req, res) => {
 
 // User login route
 app.post('/login', async (req, res) => {
+    // Set header to specify the content type as JSON
+    res.setHeader('Content-Type', 'application/json');
     const { email, password } = req.body;
 
     try {
@@ -173,11 +177,15 @@ function verifyToken(req, res, next) {
 }
 
 app.post('/validToken', verifyToken, async (req, res) => {
+    // Set header to specify the content type as JSON
+    res.setHeader('Content-Type', 'application/json');
     res.json({ status: true });
 });
 
 // Store saveprofile endpoint
 app.post('/saveprofile', verifyToken, async (req, res) => {
+    // Set header to specify the content type as JSON
+    res.setHeader('Content-Type', 'application/json');
     const { userId } = req;
     const { firstName, lastName, userEmail , image} = req.body;
     try {
@@ -203,6 +211,8 @@ app.post('/saveprofile', verifyToken, async (req, res) => {
     }
 }); 
 app.post('/savelinks', verifyToken, async (req, res) => {
+    // Set header to specify the content type as JSON
+    res.setHeader('Content-Type', 'application/json');
     const { userId } = req;
     const { links } = req.body;
     try {
