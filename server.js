@@ -36,10 +36,24 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Enable CORS and allow credentials
 app.use(cors({
-    origin: process.env.NODE_ENV === "development"? 'http://localhost:3000' : "https://alsheikhaminulislam.github.io/valobio/", // Specify the origin explicitly
+    origin: (origin, callback) => {
+        const allowedOrigins = [
+            'http://localhost:3000', // For development
+            'https://alsheikhaminulislam.github.io' // For production
+        ];
+
+        // Allow requests with no origin (e.g., mobile apps, curl requests)
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true, // Allow credentials (cookies, tokens, etc.)
 }));
+
+
 
 app.use(bodyParser.json());
 // Use cookie-parser
